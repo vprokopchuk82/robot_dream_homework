@@ -1,7 +1,10 @@
 from datetime import timedelta, datetime
 from airflow import DAG
-from airflow.operators.python import PythonOperator
-from .readDataFormDB import load_config, main
+from airflow.operators.python_operator import PythonOperator
+import sys
+import os
+sys.path.insert(0,os.path.abspath(os.path.dirname(__file__)))
+from readDataFormDB import load_config, main
 
 default_args = {
     'owner': 'airflow',

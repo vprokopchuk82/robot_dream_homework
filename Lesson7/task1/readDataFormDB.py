@@ -32,7 +32,3 @@ def get_all_tables(cursor):
     for table in cursor.fetchall():
         table_names.append(table[0])
     return table_names
-
-if __name__ == '__main__':
-    config = load_config()
-    main(config)
