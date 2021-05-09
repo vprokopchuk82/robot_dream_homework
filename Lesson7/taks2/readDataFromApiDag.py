@@ -4,7 +4,7 @@ from airflow.operators.python_operator import PythonOperator
 import os
 import sys
 sys.path.insert(0,os.path.abspath(os.path.dirname(__file__)))
-from readDataFromApi import load_config, main
+from script.readDataFromApi import load_config, main
 
 default_args = {
     'owner': 'airflow',

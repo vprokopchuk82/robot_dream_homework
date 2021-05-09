@@ -3,8 +3,8 @@ from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 import sys
 import os
-sys.path.insert(0,os.path.abspath(os.path.dirname(__file__)))
-from readDataFormDB import load_config, main
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+from script.readDataFormDB import load_config, main
 
 default_args = {
     'owner': 'airflow',
@@ -18,22 +18,24 @@ default_args = {
 
 
 def read_data_from_db_task():
+    print(os.path.abspath(os.path.dirname(__file__)))
     config = load_config()
     main(config)
 
 
 with DAG(
-    dag_id='read_data_from_db_dag',
-    default_args=default_args,
-    description='Read data from db and save to csv',
-    schedule_interval=timedelta(days=1),
-    start_date=datetime(2021, 5, 9, 12),
-    end_date=datetime(2021, 5, 10, 12),
+        dag_id='read_data_from_db_dag',
+        default_args=default_args,
+        description='Read data from db and save to csv',
+        schedule_interval=timedelta(days=1),
+        start_date=datetime(2021, 5, 9, 12),
+        end_date=datetime(2021, 5, 10, 12),
 ) as dag:
-    t1=PythonOperator(
+    t1 = PythonOperator(
         task_id='read_data_from_db_task',
         dag=dag,
         python_callable=read_data_from_db_task
     )
+
 
 
