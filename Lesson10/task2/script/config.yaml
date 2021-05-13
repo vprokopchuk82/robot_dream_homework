@@ -1,0 +1,17 @@
+url: "https://robot-dreams-de-api.herokuapp.com"
+api:
+  endpoint: "/out_of_stock"
+  date:
+    - "2021-01-02"
+    - "2021-01-03"
+auth:
+  endpoint: "/auth"
+  credential:
+    username: "rd_dreams"
+    password: "djT6LasE"
+
+hadoop:
+  host: "localhost"
+  port: 50070
+  user: "user"
+
